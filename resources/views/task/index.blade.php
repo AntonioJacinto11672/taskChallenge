@@ -45,14 +45,15 @@
 
         {{-- Formulário --}}
 
-      <x-alert/>
+        <x-alert />
 
         <form action={{ route('task.store') }} method="post" onSubmit=""
             class="flex flex-col gap-4 p-5 justify-center items-center content-center">
             {{--  {/* Formulário Para Criar Tarefas */} --}}
 
-           @include('partials.form')
-            <button type="submit" class="p-2.5 bg-yellow-500 w-[392px] text-gray-100 hover:shadow-sm cursor-pointer font-sans">Guardar</button>
+            @include('partials.form')
+            <button type="submit"
+                class="p-2.5 bg-yellow-500 w-[392px] text-gray-100 hover:shadow-sm cursor-pointer font-sans">Guardar</button>
 
         </form>
 
@@ -84,15 +85,17 @@
                         <div class="flex gap-2 items-center">
 
                             <span class="cursor-pointer pl-2.5">
-                                <a href={{ route('task.edit', $task->id)  }}>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="w-[1.2rem] h-[1.2rem] my-auto cursor-pointer">
-                                        <path
-                                            d="M13.9443 9.16667L14.8321 10.0544L6.25656 18.6111H5.38767V17.7422L13.9443 9.16667ZM17.3443 3.5C17.1082 3.5 16.8627 3.59444 16.6832 3.77389L14.9549 5.50222L18.4966 9.04389L20.2249 7.31556C20.5932 6.94722 20.5932 6.33333 20.2249 5.98389L18.0149 3.77389C17.826 3.585 17.5899 3.5 17.3443 3.5ZM13.9443 6.51278L3.49878 16.9583V20.5H7.04045L17.486 10.0544L13.9443 6.51278Z"
-                                            fill="#51646E" />
-                                    </svg>
-                                </a>
+                                @if ($task->status != 'c')
+                                    <a href={{ route('task.edit', $task->id) }}>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="w-[1.2rem] h-[1.2rem] my-auto cursor-pointer">
+                                            <path
+                                                d="M13.9443 9.16667L14.8321 10.0544L6.25656 18.6111H5.38767V17.7422L13.9443 9.16667ZM17.3443 3.5C17.1082 3.5 16.8627 3.59444 16.6832 3.77389L14.9549 5.50222L18.4966 9.04389L20.2249 7.31556C20.5932 6.94722 20.5932 6.33333 20.2249 5.98389L18.0149 3.77389C17.826 3.585 17.5899 3.5 17.3443 3.5ZM13.9443 6.51278L3.49878 16.9583V20.5H7.04045L17.486 10.0544L13.9443 6.51278Z"
+                                                fill="#51646E" />
+                                        </svg>
+                                    </a>
+                                @endif
                             </span>
                             @if ($task->status == 'p')
                                 <p class="text-xs font-normal leading-4 text-red-600"> pendente </p>
@@ -128,7 +131,7 @@
 
         </div>
 
-        <x-pagination :paginator="$tasks" :appends="$filters"/>
+        <x-pagination :paginator="$tasks" :appends="$filters" />
 
 
     </div>
