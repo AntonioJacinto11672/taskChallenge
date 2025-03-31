@@ -16,7 +16,7 @@ class TaskService
         int $page = 1,
         int $totalPage = 15,
         string $filter = null
-    ): PaginationInterface {
+    ): PaginationInterface {    
         return $this->repository->paginate(page: $page, totalPage: $totalPage, filter: $filter);
     }
 

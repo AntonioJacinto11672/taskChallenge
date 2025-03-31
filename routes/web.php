@@ -9,6 +9,8 @@ Route::get('/', function () {
 
 
 //Route::post('/task', [TaskController::class, 'create'])->name('task.create');
+
+//Route::resource('/task', TaskController::class);
 Route::get('/task', [TaskController::class, 'index'])->name('task.index');
 Route::post('/task', [TaskController::class, 'store'])->name('task.store');
 Route::get('/task/{id}', [TaskController::class, 'edit'])->name('task.edit');

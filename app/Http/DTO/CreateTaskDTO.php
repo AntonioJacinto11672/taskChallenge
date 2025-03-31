@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\DTO;
+
+use App\Http\Requests\TaskRequest;
 use Illuminate\Http\Request;
 
 class CreateTaskDTO
@@ -12,7 +14,7 @@ class CreateTaskDTO
         public string $due_date
     ) {}
 
-    public static function makeFormRequest(Request $request){
+    public static function makeFormRequest(TaskRequest $request){
         return new self(
             $request->title,
             $request->description,

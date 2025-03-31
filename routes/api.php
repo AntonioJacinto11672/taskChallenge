@@ -1,15 +1,6 @@
 <?php
 
-use App\Http\Controllers\TaskController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\TaskController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
-Route::get('test', function(){
-    return "Testando a rota api";
-});
-
-
+Route::apiResource('/tasks', TaskController::class);

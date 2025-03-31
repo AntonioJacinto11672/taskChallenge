@@ -22,7 +22,7 @@ class TaskRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            ['title' => 'required|unique:tasks|max:255']
+            'title' => 'required|unique:tasks|max:255'
         ];
 
         if ($this->method() == 'PUT') {
