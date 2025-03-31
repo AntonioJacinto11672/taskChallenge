@@ -84,7 +84,7 @@
                         <div class="flex gap-2 items-center">
 
                             <span class="cursor-pointer pl-2.5">
-                                <a href={{ $task->status == "pendente" ? route('task.edit', $task->id) : route('task.updateStatus', $task->id) }}>
+                                <a href={{ route('task.edit', $task->id)  }}>
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg"
                                         class="w-[1.2rem] h-[1.2rem] my-auto cursor-pointer">
@@ -94,14 +94,14 @@
                                     </svg>
                                 </a>
                             </span>
-                            @if ($task->status == 'pendente')
-                                <p class="text-xs font-normal leading-4 text-red-600"> {{ $task->status }} </p>
+                            @if ($task->status == 'p')
+                                <p class="text-xs font-normal leading-4 text-red-600"> pendente </p>
                             @endif
-                            @if ($task->status == 'em_andamento')
+                            @if ($task->status == 'a')
                                 <p class="text-xs font-normal leading-4 text-yellow-600">Em Andamento </p>
                             @endif
-                            @if ($task->status == 'concluído')
-                                <p class="text-xs font-normal leading-4 text-green-600"> {{ $task->status }} </p>
+                            @if ($task->status == 'c')
+                                <p class="text-xs font-normal leading-4 text-green-600"> Concluido </p>
                             @endif
                         </div>
                         <div class="flex gap-2 items-center">
@@ -112,7 +112,7 @@
                                 class="flex items-center">
                                 @csrf()
                                 @method('DELETE')
-                                @if ($task->status == 'pendente')
+                                @if ($task->status == 'p')
                                     <button type="submit"><img src="/img/remove.svg" alt="Remover"
                                             class="text-red-500" />
                                     </button>

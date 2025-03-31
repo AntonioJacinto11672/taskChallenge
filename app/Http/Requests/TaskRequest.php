@@ -24,12 +24,13 @@ class TaskRequest extends FormRequest
         $rules = [
             'title' => 'required|unique:tasks|max:255'
         ];
-
-        if ($this->method() == 'PUT') {
-            $rules = [
-                'title' => 'required',"unique:tasks,title,{$this->id},id",'max:255',
-            ];
+        if ($this->method() == 'PUT' ||$this->method() == 'PATCH') {
+            $id = $this->task ?? $this->id;
+            $rules['title'] = ['required',"unique:tasks,title,{$id},id",'max:255'];
+            /* $rules['status'] = 'required|in:pending,completed'; */
+        
         }
+        
         return $rules;
     }
 }

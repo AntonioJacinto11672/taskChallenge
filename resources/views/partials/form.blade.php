@@ -1,5 +1,6 @@
 @csrf()
 <div class="box-border">
+    
     <input type="text" name="title" id="" placeholder="Título" value='{{$task->title ?? old('title')}}'
         class="w-[390px] h-[45.84px] l-[443.65px]  top-[81.81px] border-none bg-white shadow-gray-400 shadow pl-2.5 outline-none text-base placeholder:font-bold placeholder:text-black" />
 

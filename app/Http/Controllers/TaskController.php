@@ -97,7 +97,7 @@ class TaskController extends Controller
      */
     public function update(TaskRequest $request, string $id)
     {
-        $task = $this->service->update(UpdateTaskDTO::makeFormRequest($request));
+        $task = $this->service->update(UpdateTaskDTO::makeFormRequest($request, $id));
 
         if (!$task) {
             return redirect()->back();

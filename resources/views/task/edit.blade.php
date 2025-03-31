@@ -40,21 +40,33 @@
             {{--  {/* Formulário Para Criar Tarefas */} --}}
             @csrf
             @method('put')
-            @if ($task->status == 'pendente')
-                @include('partials.form', ['task' => $task] )
+            @if ($task->status == 'p')
+                @include('partials.form', ['task' => $task])
             @endif
-            {{-- <div class="flex flex-col gap-y-2">
+
+            @if ($task->status != 'p')
+                <input type="hidden" name="title" id="" placeholder="Título"
+                    value='{{ $task->title ?? old('title') }}'
+                    class="w-[390px] h-[45.84px] l-[443.65px]  top-[81.81px] border-none bg-white shadow-gray-400 shadow pl-2.5 outline-none text-base placeholder:font-bold placeholder:text-black" />
+            @endif
+
+
+            <div class="flex flex-col gap-y-2">
                 <label for="" class="text-sm">Status</label>
                 <select name="status" id=""
                     class="w-[392px] h-[45.84px] bg-white border-none shadow-gray-400 shadow pl-2.5 outline-none text-base placeholder:font-bold placeholder:text-black ">
-                    <option value="em_andamento">Em andamento</option>
-                    <option value="concluído">Concluído</option>
+                    @if ($task->status == 'p')
+                        <option value="p">Pendente</option>
+                    @endif
+                    <option value="a">Em andamento</option>
+                    <option value="c">Concluído</option>
                 </select>
-            </div> --}}
+            </div>
 
-            <button type="submit" class="p-2.5 bg-yellow-500 w-[392px] text-gray-100 hover:shadow-sm cursor-pointer font-sans">Atualizar</button>
+            <button type="submit"
+                class="p-2.5 bg-yellow-500 w-[392px] text-gray-100 hover:shadow-sm cursor-pointer font-sans">Atualizar</button>
 
-            
+
         </form>
     </div>
 </body>
